@@ -27,9 +27,17 @@ function Post(props) {
       setCurtida((Number(curtida.replace('.',''))-1).toLocaleString().replace(',','.'))
     }
   }
+  function curtirPostImagem(){
+    if(like==='heart-outline'){
+      setLike('heart')
+      setLiked('liked')
+     
+      setCurtida((Number(curtida.replace('.',''))+1).toLocaleString().replace(',','.'))
+  }
+}
 
   return (
-    <div class="post">
+    <div class="post" >
       <div class="topo">
         <div class="usuario">
           <img src={props.imagem} />
@@ -40,7 +48,7 @@ function Post(props) {
         </div>
       </div>
 
-      <div class="conteudo">
+      <div class="conteudo" onClick={curtirPostImagem}>
         <img src={props.imgpost}/>
       </div>
 
