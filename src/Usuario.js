@@ -7,15 +7,37 @@ function DadosUsuario(props) {
   const [foto, setFoto] = React.useState(props.imagem)
 
   function mudaNome(){
-    const nomePerfil = prompt('Qual é o novo nome do perfil?')
-    const novoNome = prompt('Qual é o novo nome do usuário?')
-    setPerfil(nomePerfil)
-    setNome(novoNome)
-  }
+    let nomePerfil;
+    let novoNome;
 
+    while(nomePerfil==='' || nomePerfil===undefined){
+      nomePerfil = prompt('Qual é o novo nome do perfil?')
+      if(nomePerfil!==null){
+        nomePerfil= nomePerfil.split(' ').join('')
+      }
+    }
+
+    while(novoNome==='' || novoNome===undefined){
+      novoNome = prompt('Qual é o novo nome do usuário?')
+      if(novoNome!==null){
+        novoNome = novoNome.split(' ').join('')
+      }
+    }
+    
+    if(novoNome!==null){
+      setNome(novoNome)
+    }
+    if(nomePerfil!==null){
+      setPerfil(nomePerfil)
+    }
+  }
+ 
   function mudaFoto(){
     const novaFoto = prompt('Insira o link da imagem da nova foto:')
-    setFoto(novaFoto)
+    // quando cancela o prompt o valor armazenado em mudaFoto é null;
+    if(novaFoto!==null){
+      setFoto(novaFoto)
+    }
   }
   return (
     <>
