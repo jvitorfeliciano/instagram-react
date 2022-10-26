@@ -402,4 +402,18 @@ ion-icon {
 
 .liked {
   color: red;
+  transition: all 0.08s;
 }
+
+.notLiked{
+  transition: all  0.08s;
+}
+
+.notLiked:hover{
+  filter:brightness(400%)
+}
+
+.notLiked:active{
+  transform: scale(1.5,1.5);
+}
+

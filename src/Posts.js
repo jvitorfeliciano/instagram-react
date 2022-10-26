@@ -1,11 +1,13 @@
 import React from 'react'
 
 function Post(props) {
+  // criar as variáveis cujos estados serão alterados
   const [estado, setEstado] = React.useState('bookmark-outline')
   const [like, setLike] = React.useState('heart-outline')
   const [liked, setLiked] = React.useState('notLiked')
   const [curtida, setCurtida] = React.useState(props.curtidas)
 
+  // a função salvarPost verifica ao clicar no icon se o estado inicial do item salvo é igual a bookmark-outline, se sim, o novo estado setado será bookmark, senão será setado bookmark-outline
   function salvarPost(){
     if(estado === 'bookmark-outline'){
         setEstado('bookmark')
@@ -14,6 +16,11 @@ function Post(props) {
       setEstado('bookmark-outline')
     }
   }
+
+  // a função curtirPost verifica ao clicar no icon heart os seguintes pontos:
+  //1- se o o estado inicial de Like é heart-outline, o novo estado settado para Like será heart 
+  //2- Para Liked será settado a class liked que deixa o icon vermelho
+  //3- A curtida será settado o valor de likes mais +1. Em curtida é trocado os pontos por vazio, depois convertido para número e somado mais 1, em seguida tranforma o número em uma string e troca , por .;
 
   function curtirPost(){
     if(like==='heart-outline'){
@@ -27,6 +34,8 @@ function Post(props) {
       setCurtida((Number(curtida.replace('.',''))-1).toLocaleString().replace(',','.'))
     }
   }
+
+  // realiza praticamente a mesma coisa, porém é feito somente para quando if for true, quando o post ainda não foi curtido;
   function curtirPostImagem(){
     if(like==='heart-outline'){
       setLike('heart')
